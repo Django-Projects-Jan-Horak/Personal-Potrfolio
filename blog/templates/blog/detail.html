@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.82.0">
-    <title>Jen Horák</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
@@ -49,54 +49,34 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}">Jen Horák</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{% url 'home' %}">Jen Horák</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="https://twitter.com/Jenjedenjen">Twitter</a>
                 <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-                <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </div>
-          </div>
+            </div>
         </div>
-      </nav>
+        </nav>
 </header>
 
 <main>
+    <a href="{% url 'allblogs'%}">Go Back</a>
+    <div class="container text-center">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I'm Jen</h1>
-        <p class="lead text-muted">Hey, Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptates dolore rem delectus quos ad pariatur, fuga similique fugit vel maxime doloremque maiores, eos ratione laborum error adipisci ut modi?</p>
-        <img src="{% static 'IMG_20210212_110156.jpg' %}" alt="Image Of Myself" class="rounded" height="500">
-        <p>
-          <a href="mailto:janhorak58@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-    <div class="row">
-    {% for job in jobs.all %}
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-            <img src="{{ job.image.url }}" alt="Job Image" class="card-img-top">
-            <div class="card-body">
-              <p class="card-text">{{ job.summary}}</p>
+            <div class="pt-5 container">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.pub_date }}</p>
+                <img src="{{ blog.image.url }}" alt="Blog image" class="img-fluid">
+                <br>
+                <hr>
+                <p>{{ blog.body }}</p>
             </div>
-        </div>
-      </div>
-      {% endfor %}
-
     </div>
-  </div>
 </main>
 
 <footer class="text-muted py-5">
